@@ -1,4 +1,4 @@
-# AI Guiding System wx
+# AI_Guiding_System_wx
 
 一个基于微信小程序的 AI 导览系统原型项目，面向博物馆/展馆导览场景，演示“身份标签 + 馆内地图 + 自动讲解 + 分屏导览”的基础交互流程。
 
