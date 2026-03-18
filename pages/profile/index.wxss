@@ -1,0 +1,99 @@
+.profile-page {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f9f3eb 0%, #f1e8db 100%);
+  padding: 0 40rpx;
+  box-sizing: border-box;
+}
+
+.top-space {
+  height: 200rpx;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.82);
+  border: 2rpx solid rgba(149, 103, 65, 0.18);
+  border-radius: 36rpx;
+  box-shadow: 0 16rpx 40rpx rgba(63, 38, 16, 0.08);
+  padding: 42rpx 34rpx;
+}
+
+.title {
+  font-size: 44rpx;
+  font-weight: 700;
+  color: #2f2116;
+}
+
+.subtitle {
+  margin-top: 14rpx;
+  display: block;
+  font-size: 26rpx;
+  color: #7f6650;
+  line-height: 1.6;
+}
+
+.input-shell {
+  margin-top: 32rpx;
+  border-radius: 24rpx;
+  background: #fcf8f3;
+  border: 2rpx solid #eadcc8;
+  padding: 0 24rpx;
+}
+
+.tag-input {
+  height: 92rpx;
+  font-size: 30rpx;
+  color: #3b2818;
+}
+
+.input-placeholder {
+  color: #baa590;
+}
+
+.quick-title {
+  margin-top: 32rpx;
+  font-size: 26rpx;
+  color: #7d6650;
+}
+
+.quick-list {
+  margin-top: 18rpx;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16rpx;
+}
+
+.quick-item {
+  padding: 14rpx 24rpx;
+  font-size: 26rpx;
+  border-radius: 999rpx;
+  border: 2rpx solid #dfcfba;
+  color: #6d543e;
+  background: #f8f1e7;
+}
+
+.quick-item-active {
+  border-color: #aa7c4b;
+  color: #5b3819;
+  background: #f2dfc8;
+}
+
+.start-btn {
+  margin-top: 40rpx;
+  height: 88rpx;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0;
+  border: 0;
+  border-radius: 20rpx;
+  background: #b98c5f;
+  color: #fff9f2;
+  font-size: 30rpx;
+  font-weight: 600;
+}
+
+.start-btn::after {
+  border: 0;
+}

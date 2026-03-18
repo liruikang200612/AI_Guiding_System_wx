@@ -1,0 +1,9 @@
+{
+  "desc": "museum guide sitemap",
+  "rules": [
+    {
+      "action": "allow",
+      "page": "*"
+    }
+  ]
+}

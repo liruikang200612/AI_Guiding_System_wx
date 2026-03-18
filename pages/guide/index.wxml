@@ -1,0 +1,172 @@
+<view class="guide-page safe-bottom">
+  <view class="component-viewport {{splitPane.active ? 'component-viewport-active' : ''}}">
+    <view class="component-shell">
+      <view class="component-head">
+        <text class="component-title">{{splitPane.title}}</text>
+      </view>
+
+      <view class="component-body" wx:if="{{splitPane.type === 'map'}}">
+        <view class="map-stage split-map-stage">
+          <view class="map-floor">
+            <view
+              class="zone zone-a {{currentZoneId === 'relicA' ? 'zone-active' : ''}}"
+              style="left: {{zones[0].x}}rpx; top: {{zones[0].y}}rpx; width: {{zones[0].w}}rpx; height: {{zones[0].h}}rpx;"
+            >
+              文物A触发区
+            </view>
+            <view
+              class="zone zone-b"
+              style="left: {{zones[1].x}}rpx; top: {{zones[1].y}}rpx; width: {{zones[1].w}}rpx; height: {{zones[1].h}}rpx;"
+            >
+              青铜器展区
+            </view>
+            <view
+              class="zone zone-c"
+              style="left: {{zones[2].x}}rpx; top: {{zones[2].y}}rpx; width: {{zones[2].w}}rpx; height: {{zones[2].h}}rpx;"
+            >
+              书画展区
+            </view>
+            <view class="user-dot" style="left: {{userPos.x}}rpx; top: {{userPos.y}}rpx;"></view>
+          </view>
+        </view>
+
+        <view class="control-row">
+          <view class="btn ghost" bindtap="startSimulate">模拟定位</view>
+          <view class="btn ghost" bindtap="stopSimulate">停止</view>
+          <view class="btn ghost" bindtap="resetSimulate">重置</view>
+        </view>
+      </view>
+
+      <view class="component-body component-info" wx:elif="{{splitPane.type}}">
+        <view class="component-desc">{{splitPane.desc}}</view>
+      </view>
+
+      <view class="component-body component-info" wx:else>
+        <view class="component-desc">拖拽按钮到页面中央可打开分屏内容。</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="dialog-viewport {{splitPane.active ? 'dialog-viewport-split' : ''}}">
+    <view
+      class="split-divider"
+      wx:if="{{splitPane.active}}"
+      catchtouchstart="onSplitDividerTouchStart"
+      catchtouchmove="onSplitDividerTouchMove"
+      catchtouchend="onSplitDividerTouchEnd"
+      catchtouchcancel="onSplitDividerTouchEnd"
+    >
+      <view class="split-divider-bar"></view>
+    </view>
+
+    <view class="dialog-page">
+      <view class="status-space"></view>
+
+      <view class="topbar">
+        <view class="icon-btn" bindtap="goProfile">
+          <view class="ico ico-menu"></view>
+        </view>
+        <view class="title-wrap">
+          <text class="main-title">新对话</text>
+        </view>
+      </view>
+
+      <view class="center-stage">
+        <view class="welcome-title">今天有什么可以帮到你？</view>
+      </view>
+
+      <view class="chat-dock {{splitPane.active ? 'chat-dock-split' : ''}}">
+        <view class="chip-row-placeholder"></view>
+
+        <view class="input-bar">
+          <view class="left-icons">
+            <view class="ico ico-camera"></view>
+          </view>
+          <view class="placeholder">发消息或按住说话</view>
+          <view class="right-icons">
+            <view class="ico ico-mic"></view>
+          </view>
+          <view class="right-icons">
+            <view class="ico ico-plus"></view>
+          </view>
+        </view>
+      </view>
+
+      <movable-area class="map-chip-area" wx:if="{{!splitPane.active}}">
+        <movable-view
+          class="action-chip-floating chip-map"
+          direction="all"
+          inertia
+          damping="26"
+          friction="2"
+          data-key="map"
+          x="{{actionChips.map.x}}"
+          y="{{actionChips.map.y}}"
+          animation="{{actionChips.map.animate}}"
+          bindchange="onActionChipChange"
+          bindtouchend="onActionChipDrop"
+          bindtap="onActionChipTap"
+        >
+          地图
+        </movable-view>
+        <movable-view
+          class="action-chip-floating chip-collect"
+          direction="all"
+          inertia
+          damping="26"
+          friction="2"
+          data-key="collect"
+          x="{{actionChips.collect.x}}"
+          y="{{actionChips.collect.y}}"
+          animation="{{actionChips.collect.animate}}"
+          bindchange="onActionChipChange"
+          bindtouchend="onActionChipDrop"
+          bindtap="onActionChipTap"
+        >
+          今日馆藏
+        </movable-view>
+        <movable-view
+          class="action-chip-floating chip-route"
+          direction="all"
+          inertia
+          damping="26"
+          friction="2"
+          data-key="route"
+          x="{{actionChips.route.x}}"
+          y="{{actionChips.route.y}}"
+          animation="{{actionChips.route.animate}}"
+          bindchange="onActionChipChange"
+          bindtouchend="onActionChipDrop"
+          bindtap="onActionChipTap"
+        >
+          快速路线
+        </movable-view>
+        <movable-view
+          class="action-chip-floating chip-qa"
+          direction="all"
+          inertia
+          damping="26"
+          friction="2"
+          data-key="qa"
+          x="{{actionChips.qa.x}}"
+          y="{{actionChips.qa.y}}"
+          animation="{{actionChips.qa.animate}}"
+          bindchange="onActionChipChange"
+          bindtouchend="onActionChipDrop"
+          bindtap="onActionChipTap"
+        >
+          亲子问答
+        </movable-view>
+      </movable-area>
+
+      <view class="explain-card {{splitPane.active ? 'explain-card-split' : ''}}" wx:if="{{showCard}}">
+        <view class="card-title">{{activeCard.title}}</view>
+        <view class="card-desc">{{activeCard.desc}}</view>
+        <view class="card-foot">
+          <text>{{voiceStatusText}}</text>
+          <text class="close" bindtap="closeCard">关闭</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,15 @@
+{
+  "pages": [
+    "pages/profile/index",
+    "pages/guide/index"
+  ],
+  "window": {
+    "navigationStyle": "custom",
+    "backgroundTextStyle": "light",
+    "backgroundColor": "#f6f0e7",
+    "backgroundColorTop": "#f6f0e7",
+    "backgroundColorBottom": "#f6f0e7"
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

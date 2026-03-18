@@ -1,0 +1,33 @@
+<view class="profile-page safe-bottom">
+  <view class="top-space"></view>
+  <view class="card">
+    <text class="title">设置你的导览身份</text>
+    <text class="subtitle">例如：历史极客 / 亲子家庭 / 文博新手</text>
+
+    <view class="input-shell">
+      <input
+        class="tag-input"
+        placeholder="输入你的身份标签"
+        placeholder-class="input-placeholder"
+        maxlength="20"
+        value="{{tagInput}}"
+        bindinput="onInput"
+      />
+    </view>
+
+    <view class="quick-title">快捷选择</view>
+    <view class="quick-list">
+      <view
+        class="quick-item {{item === tagInput ? 'quick-item-active' : ''}}"
+        wx:for="{{quickTags}}"
+        wx:key="*this"
+        data-tag="{{item}}"
+        bindtap="pickTag"
+      >
+        {{item}}
+      </view>
+    </view>
+
+    <button class="start-btn" bindtap="confirmTag">开始导览</button>
+  </view>
+</view>
